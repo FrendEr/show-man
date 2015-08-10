@@ -1,0 +1,32 @@
+{
+  "name": "show-man",
+  "version": "0.0.1",
+  "description": "A simple and convenient command tool to show you the information about the computer.",
+  "main": "show.js",
+  "bin": {
+    "show": "bin/show.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrendEr/show-man.git"
+  },
+  "keywords": [
+    "showman",
+    "cmd",
+    "node",
+    "nodejs"
+  ],
+  "author": "Frend",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FrendEr/show-man/issues"
+  },
+  "homepage": "https://github.com/FrendEr/show-man#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "commander": "^2.8.1"
+  }
+}
