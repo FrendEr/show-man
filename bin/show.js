@@ -9,7 +9,7 @@ console.log(' |  ' + 'Show Man'.america.bold + '  |');
 console.log(' ==============\n'.bold);
 
 program
-    .version('Version: @0.0.2')
+    .version('Version: @0.0.3')
     .option('-l, --language <default zh>', 'select language')
     .option('-a, --all', 'output all information')
     .option('ip', 'output ip address')
@@ -115,4 +115,4 @@ program.fm && cmdMap.fm(label);
  */
 program.cpu && cmdMap.cpu(label);
 
-me();
+cmdMap.me();
