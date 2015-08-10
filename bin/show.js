@@ -4,8 +4,12 @@ var os = require('os');
 var program = require('commander');
 var colors = require('colors');
 
+console.log('\n =============='.bold);
+console.log(' |  ' + 'Show Man'.america.bold + '  |');
+console.log(' ==============\n'.bold);
+
 program
-    .version('Version: @0.0.1')
+    .version('Version: @0.0.2')
     .option('-l, --language <default zh>', 'select language')
     .option('-a, --all', 'output all information')
     .option('ip', 'output ip address')
@@ -16,10 +20,20 @@ program
     .option('cpu', 'out cpu detail')
     .parse(process.argv);
 
+if (!process.argv.slice(2).length) {
+    program.outputHelp();
+    return;
+}
+
 var lan = program.language || 'zh';
 var lanMap = {
-    'en': {ip: 'IP : ', os: 'OS : ', arch: 'Arch : ', tm: 'Total Memory : ', fm: 'Free Memory : ', cpu : 'CPU : '},
-    'zh': {ip: 'IP地址 : ', os: '操作系统 : ', arch: '处理器 : ', tm: '机身内存大小 : ', fm: '可用内存大小 : ', cpu: 'CPU配置 : '}
+    en: {
+        ip: ' IP           : '.cyan, os: ' OS           : '.cyan, arch: ' Arch         : '.cyan, tm: ' Total Memory : '.cyan, fm: ' Free Memory  : '.cyan, cpu : ' CPU          : '.cyan
+    },
+
+    zh: {
+        ip: ' IP地址       : '.cyan, os: ' 操作系统     : '.cyan, arch: ' 处理器       : '.cyan, tm: ' 机身内存大小 : '.cyan, fm: ' 可用内存大小 : '.cyan, cpu: ' CPU配置      : '.cyan
+    }
 };
 var label = lanMap[lan];
 var map = {
@@ -51,6 +65,10 @@ var cmdMap = {
 
     cpu  : function(label) {
         console.log(label.cpu.green, os.cpus()[0].model.bold);
+    },
+
+    me: function() {
+        console.log('\n [ Github: https://github.com/FrendEr/show-man, by Frend ]\n'.gray);
     }
 };
 
@@ -96,3 +114,5 @@ program.fm && cmdMap.fm(label);
  * output cpu detail
  */
 program.cpu && cmdMap.cpu(label);
+
+me();
