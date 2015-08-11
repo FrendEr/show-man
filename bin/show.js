@@ -6,11 +6,11 @@ var program = require('commander');
 var colors = require('colors');
 
 console.log('\n =============='.bold);
-console.log(' |  ' + 'Show Man'.america.bold + '  |');
+console.log(' |  ' + 'Show Man'.white.bold + '  |');
 console.log(' ==============\n'.bold);
 
 program
-    .version('Version: @0.0.4')
+    .version('Version: @0.0.5')
     .option('-l, --language <default zh>', 'select language')
     .option('-a, --all', 'output all information')
     .option('ip', 'output ip address')
@@ -19,7 +19,7 @@ program
     .option('tm', 'output total memory')
     .option('fm', 'output free memory')
     .option('cpu', 'output cpu detail')
-    .option('host', 'output host')
+    .option('host', 'output host in darwin')
     .parse(process.argv);
 
 if (!process.argv.slice(2).length) {
@@ -82,6 +82,10 @@ var cmdMap = {
     },
 
     host: function(label) {
+        if (process.platform !== 'darwin') {
+            return console.log(label.host.green, 'Sorry, output host just support in Mac OSX.'.red);
+        }
+
         var hosts = fs.readFileSync('/etc/hosts').toString('utf-8').split(/\s+/g),
             pureHosts = [],
             hostString = '';
@@ -91,12 +95,14 @@ var cmdMap = {
         }
 
         for (var j = 0; j < pureHosts.length; j++) {
+            var prefix = (j === 0) ? '' : ' ||  ';
+
             if (/^[1-9]/.test(pureHosts[j])) {
-                hostString += ' ||  ' + pureHosts[j] + ' ---> ';
+                hostString += prefix + pureHosts[j] + ' --> '.green;
             } else if (/^#/.test(pureHosts[j])) {
-                hostString += pureHosts[j] + ' -x-> ';
+                hostString += (prefix + pureHosts[j] + ' -x- '.red);
             } else {
-                hostString += pureHosts[j];
+                hostString += pureHosts[j] + ' ';
             }
         }
         console.log(label.host.green, hostString.bold);

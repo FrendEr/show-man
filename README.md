@@ -4,7 +4,7 @@ What is show-man about? *In short, it's a simple and convenient command tool to 
 
 ## Version
 
-- **@0.0.4**
+- **@0.0.5**
 
 ## Installation
 
@@ -42,7 +42,7 @@ Usage: show [options]                                           |
     tm                           output total memory            |
     fm                           output free memory             |
     cpu                          output cpu detail              |
-    host                         output host                    |
+    host                         output host in darwin          |
                                                                 |
 _________________________________________________________________
 
@@ -84,7 +84,7 @@ ____________________________________________________________________________
     Total Memory :  4GB                                                    |
     Free Memory  :  119MB                                                  |
     CPU          :  Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz               |
-    Host         :  #127.0.0.1 -x-> localhost || 127.0.0.1 ---> frend.cc   |
+    Host         :  #127.0.0.1 -x- localhost || 127.0.0.1 --> frend.cc     |
                                                                            |
 ____________________________________________________________________________
 
