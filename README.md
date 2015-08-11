@@ -4,7 +4,7 @@ What is show-man about? *In short, it's a simple and convenient command tool to 
 
 ## Version
 
-- **@0.0.3**
+- **@0.0.4**
 
 ## Installation
 
